@@ -52,7 +52,7 @@ def take_guess():
         print(f"You have {GuessTrials} guesses")
     time.sleep(0.2)
     take_guess.guess_input = input("Now it's time to guess my word\nTake a guess\n:").lower()
-
+    take_guess.limit = GuessTrials -1
 
 def check_guess():
     global UserScore
@@ -61,7 +61,7 @@ def check_guess():
     while True:
         if take_guess.guess_input != secret_word:
             print("Nice try, but that's not it.")
-            if trial == GuessTrials:
+            if trial == take_guess.limit:
                 print("You have exhausted your guesses")
                 UserScore += 0
                 print("You didn't win any mark this round.")
